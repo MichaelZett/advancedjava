@@ -4,7 +4,9 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 import studis.studenten.Student;
@@ -14,7 +16,7 @@ public class StudiApp {
 	private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd MMM yyyy");
 
 	public static void main(String[] args) {
-		StudentRepository repo = new StudentRepository();
+		StudentRepository repo = StudentRepository.getInstance();
 
 		repo.saveOrUpdate(new Student("q1", "Peter", "Müller", LocalDate.of(1980, 7, 12)));
 		repo.saveOrUpdate(new Student("q2", "Werner", "Meyer", LocalDate.parse("2000-04-01")));
@@ -33,9 +35,18 @@ public class StudiApp {
 		if (result.isPresent()) {
 			System.out.println(result.get());
 		}
-		
+
 		System.out.println("Der Älteste ist: " + repo.findOldestStudent());
 		System.out.println("Formatiert: " + FORMATTER.format(result.get().getGeburtstag()));
+
+		List<Collection<Student>> liste = new ArrayList<>();
+
+		liste.add(repo.findAll());
+		liste.add(repo.findAll());
+		liste.add(repo.findAll());
+		var peter = "";
+
+		peter = "Peter";
 	}
 
 }
