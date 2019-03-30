@@ -1,15 +1,19 @@
 package studis.studenten;
 
+import java.time.LocalDate;
+
 public class Student {
 	private String matrikelnummer;
 	private String vorname;
 	private String nachname;
+	private LocalDate geburtstag;
 	
-	public Student(String matrikelnummer, String vorname, String nachname) {
+	public Student(String matrikelnummer, String vorname, String nachname, LocalDate geburtstag) {
 		super();
 		this.matrikelnummer = matrikelnummer;
 		this.vorname = vorname;
 		this.nachname = nachname;
+		this.geburtstag = geburtstag;
 	}
 
 	public String getMatrikelnummer() {
@@ -23,10 +27,15 @@ public class Student {
 	public String getNachname() {
 		return nachname;
 	}
+	
+	public LocalDate getGeburtstag() {
+		return geburtstag;
+	}
 
 	@Override
 	public String toString() {
-		return "Student [matrikelnummer=" + matrikelnummer + ", vorname=" + vorname + ", nachname=" + nachname + "]";
+		return "Student [matrikelnummer=" + matrikelnummer + ", vorname=" + vorname + ", nachname=" + nachname
+				+ ", geburtstag=" + geburtstag + "]";
 	}
 
 	@Override
